@@ -1,0 +1,18 @@
+.title {
+  font-size: 80px;
+}
+
+.day-input {
+  font-weight: 700;
+}
+
+.input-date {
+  font-weight: 700;
+  text-decoration: underline;
+  text-underline-offset: 10px;
+  text-decoration-thickness: 4px;
+}
+
+.result-date {
+  font-weight: 700;
+}
