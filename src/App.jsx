@@ -23,7 +23,9 @@ const App = () => {
         }}
       >
         <Calculator
-          onNumberTap={(number) => setDays(parseInt(`${days}${number}`))}
+          onNumberTap={(number) =>
+            setDays(parseInt(`${days}${number}`.slice(0, days < 0 ? 6 : 5)))
+          }
           onOperatorTap={() => setDays(-days)}
           onDeleteTap={() =>
             setDays(parseInt(days.toString().slice(0, -1)) || 0)
