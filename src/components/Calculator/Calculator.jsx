@@ -68,10 +68,6 @@ const Calculator = ({
     }
   }, [rive, onNumberTap, onOperatorTap, onDeleteTap, onResultTap]);
 
-  if (rive) {
-    console.log(rive.contents);
-  }
-
   return <RiveComponent />;
 };
 

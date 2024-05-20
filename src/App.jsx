@@ -6,6 +6,7 @@ import Title from './components/Title/Title';
 const App = () => {
   const today = Date.now();
   const [days, setDays] = useState(0);
+  const [resultDate, setResultDate] = useState(today);
 
   return (
     <div className="app-layout">
@@ -13,7 +14,7 @@ const App = () => {
         days={days}
         isNegative={false}
         inputDate={today}
-        resultDate={today}
+        resultDate={resultDate}
       />
       <div
         style={{
@@ -24,13 +25,14 @@ const App = () => {
         <Calculator
           onNumberTap={(number) => setDays(parseInt(`${days}${number}`))}
           onOperatorTap={() => setDays(-days)}
-          onDeleteTap={() => {
-            const dayStr = days.toString();
-            return setDays(
-              dayStr.length > 1 ? parseInt(dayStr.slice(0, -1)) : 0
-            );
+          onDeleteTap={() =>
+            setDays(parseInt(days.toString().slice(0, -1)) || 0)
+          }
+          onResultTap={() => {
+            const result = new Date();
+            result.setDate(result.getDate() + days);
+            return setResultDate(result);
           }}
-          onResultTap={() => console.log('Result')}
         />
       </div>
     </div>

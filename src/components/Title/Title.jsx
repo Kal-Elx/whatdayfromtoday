@@ -1,9 +1,9 @@
 import './Title.css';
 
-const Title = ({ days, isNegative, inputDate, resultDate }) => {
+const Title = ({ days, inputDate, resultDate }) => {
   return (
     <div className="title">
-      <span className="day-input">{`${isNegative ? -days : days}`}</span>
+      <span className="day-input">{`${days}`}</span>
       {' Days from '}
       <span className="input-date">{`${formatDate(inputDate, false)}`}</span>
       {' is '}
