@@ -4,17 +4,18 @@ import Calculator from './components/Calculator/Calculator';
 import Title from './components/Title/Title';
 
 const App = () => {
-  const today = Date.now();
   const [days, setDays] = useState(0);
-  const [resultDate, setResultDate] = useState(today);
+  const [inputDate, setInputDate] = useState(Date.now());
+  const [resultDate, setResultDate] = useState(Date.now());
 
   return (
     <div className="app-layout">
       <Title
         days={days}
         isNegative={false}
-        inputDate={today}
+        inputDate={inputDate}
         resultDate={resultDate}
+        onDateSelected={setInputDate}
       />
       <div
         style={{
@@ -31,7 +32,7 @@ const App = () => {
             setDays(parseInt(days.toString().slice(0, -1)) || 0)
           }
           onResultTap={() => {
-            const result = new Date();
+            const result = new Date(inputDate);
             result.setDate(result.getDate() + days);
             return setResultDate(result);
           }}

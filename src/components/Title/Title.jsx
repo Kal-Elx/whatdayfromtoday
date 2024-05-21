@@ -1,11 +1,21 @@
+import DatePicker from '../DatePicker/DatePicker';
 import './Title.css';
 
-const Title = ({ days, inputDate, resultDate }) => {
+const Title = ({ days, inputDate, resultDate, onDateSelected }) => {
   return (
     <div className="title">
       <span className="day-input">{`${days}`}</span>
       {' Days from '}
-      <span className="input-date">{`${formatDate(inputDate, false)}`}</span>
+      <DatePicker
+        date={inputDate}
+        onDateSelected={onDateSelected}
+        child={
+          <span className="input-date">{`${formatDate(
+            inputDate,
+            false
+          )}`}</span>
+        }
+      />
       {' is '}
       <span className="result-date">{`${formatDate(resultDate, true)}`}</span>
     </div>
