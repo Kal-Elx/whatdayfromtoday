@@ -17,12 +17,7 @@ const App = () => {
         resultDate={resultDate}
         onDateSelected={setInputDate}
       />
-      <div
-        style={{
-          width: 500,
-          height: 500,
-        }}
-      >
+      <div className="calculator">
         <Calculator
           onNumberTap={(number) =>
             setDays(parseInt(`${days}${number}`.slice(0, days < 0 ? 6 : 5)))
