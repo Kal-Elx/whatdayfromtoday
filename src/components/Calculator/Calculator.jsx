@@ -1,4 +1,4 @@
-import { useRive, EventType, RiveEventType } from '@rive-app/react-canvas';
+import { useRive, EventType, RiveEventType } from '@rive-app/react-canvas-lite';
 import { useEffect } from 'react';
 import './Calculator.css';
 

@@ -11,7 +11,7 @@
   },
   "dependencies": {
     "@fontsource/space-grotesk": "^5.0.18",
-    "@rive-app/react-canvas": "^4.9.5",
+    "@rive-app/react-canvas-lite": "^4.9.5",
     "react": "^18.2.0",
     "react-datepicker": "^6.9.0",
     "react-dom": "^18.2.0"
