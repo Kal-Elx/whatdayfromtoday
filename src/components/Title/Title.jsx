@@ -7,8 +7,6 @@ const Title = ({ layout, days, inputDate, resultDate, onDateSelected }) => {
   const orientation = useOrientation();
   const isMobilePortrait = isMobile && orientation.type.includes('portrait');
 
-  console.log(orientation);
-
   return (
     <div
       className={`${layout} title ${
@@ -17,7 +15,9 @@ const Title = ({ layout, days, inputDate, resultDate, onDateSelected }) => {
     >
       <div className={isMobilePortrait ? 'title-column' : 'title-row'}>
         <span className="day-input prevent-select">{`${days}`}</span>
-        <span className="prevent-select">{'Days from'}</span>
+        <span className="prevent-select">{`Day${
+          days == 1 ? '' : 's'
+        } from`}</span>
         <DatePicker
           date={inputDate}
           onDateSelected={onDateSelected}
@@ -64,11 +64,11 @@ const formatDate = (date, showWeekday = true, showRelativeDay = false) => {
     .replaceAll(',', '');
 };
 
-const isYesterday = (date) => dateDiffInDays(date, Date.now()) == 1;
+const isYesterday = (date) => dateDiffInDays(date, Date.now()) === 1;
 
-const isToday = (date) => dateDiffInDays(date, Date.now()) == 0;
+const isToday = (date) => dateDiffInDays(date, Date.now()) === 0;
 
-const isTomorrow = (date) => dateDiffInDays(date, Date.now()) == -1;
+const isTomorrow = (date) => dateDiffInDays(date, Date.now()) === -1;
 
 const dateDiffInDays = (startDate, endDate) => {
   const a = new Date(startDate);
