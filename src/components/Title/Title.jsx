@@ -1,15 +1,21 @@
+import { isMobile } from 'react-device-detect';
+import { useOrientation } from '@uidotdev/usehooks';
 import DatePicker from '../DatePicker/DatePicker';
 import './Title.css';
 
 const Title = ({ layout, days, inputDate, resultDate, onDateSelected }) => {
-  const isMobile = navigator.userAgentData.mobile;
+  const orientation = useOrientation();
+  const isMobilePortrait = isMobile && orientation.type.includes('portrait');
+
+  console.log(orientation);
+
   return (
     <div
       className={`${layout} title ${
         isMobile ? 'title-text-small' : 'title-text-large'
       }`}
     >
-      <div className={isMobile ? 'title-column' : 'title-row'}>
+      <div className={isMobilePortrait ? 'title-column' : 'title-row'}>
         <span className="day-input prevent-select">{`${days}`}</span>
         <span className="prevent-select">{'Days from'}</span>
         <DatePicker
@@ -24,7 +30,7 @@ const Title = ({ layout, days, inputDate, resultDate, onDateSelected }) => {
           }
         />
       </div>
-      <div className={isMobile ? 'title-column' : 'title-row'}>
+      <div className={isMobilePortrait ? 'title-column' : 'title-row'}>
         <span className="prevent-select">{'is'}</span>
         <span className="result-date">{`${formatDate(resultDate)}`}</span>
       </div>
