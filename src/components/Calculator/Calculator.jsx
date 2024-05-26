@@ -1,5 +1,6 @@
 import { useRive, EventType, RiveEventType } from '@rive-app/react-canvas-lite';
 import { useEffect } from 'react';
+import useKeypress from 'react-use-keypress';
 import './Calculator.css';
 
 const Calculator = ({
@@ -69,6 +70,43 @@ const Calculator = ({
       rive.on(EventType.RiveEvent, onRiveEventReceived);
     }
   }, [rive, onNumberTap, onOperatorTap, onDeleteTap, onResultTap]);
+
+  useKeypress(
+    [
+      '0',
+      '1',
+      '2',
+      '3',
+      '4',
+      '5',
+      '6',
+      '7',
+      '8',
+      '9',
+      'Backspace',
+      ' ',
+      'Enter',
+      '=',
+      '+',
+      '-',
+    ],
+    (event) => {
+      console.log(event.key);
+      if (event.key === '+' || event.key === '-') {
+        onOperatorTap();
+      } else if (event.key === 'Backspace') {
+        onDeleteTap();
+      } else if (
+        event.key === 'Enter' ||
+        event.key === '=' ||
+        event.key === ' '
+      ) {
+        onResultTap();
+      } else {
+        onNumberTap(parseInt(event.key));
+      }
+    }
+  );
 
   return (
     <div className={`${layout} calculator-container`}>
