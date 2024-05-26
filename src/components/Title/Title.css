@@ -1,5 +1,5 @@
 .title {
-  font-size: 80px;
+  font-size: 64px;
 }
 
 .day-input {
@@ -13,6 +13,21 @@
   text-decoration-thickness: 4px;
 }
 
+.input-date:hover {
+  color: #e8e8e8;
+  cursor: pointer;
+}
+
+.input-date:active {
+  font-size: 63px;
+}
+
 .result-date {
   font-weight: 700;
+}
+
+.prevent-select {
+  -webkit-user-select: none; /* Safari */
+  -ms-user-select: none; /* IE 10 and IE 11 */
+  user-select: none; /* Standard syntax */
 }

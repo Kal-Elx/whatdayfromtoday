@@ -4,20 +4,20 @@ import './Title.css';
 const Title = ({ days, inputDate, resultDate, onDateSelected }) => {
   return (
     <div className="title">
-      <span className="day-input">{`${days}`}</span>
-      {' Days from '}
+      <span className="day-input prevent-select">{`${days}`}</span>
+      <span className="prevent-select">{' Days from '}</span>
       <DatePicker
         date={inputDate}
         onDateSelected={onDateSelected}
         child={
-          <span className="input-date">{`${formatDate(
+          <span className="input-date prevent-select">{`${formatDate(
             inputDate,
             false,
             true
           )}`}</span>
         }
       />
-      {' is '}
+      <span className="prevent-select">{' is '}</span>
       <span className="result-date">{`${formatDate(resultDate)}`}</span>
     </div>
   );
