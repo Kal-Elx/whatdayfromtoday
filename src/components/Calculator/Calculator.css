@@ -1,0 +1,16 @@
+.calculator-container {
+  position: relative;
+  height: 100%;
+  width: 100%;
+  min-height: 200px;
+  max-height: 400px;
+}
+
+.calculator {
+  user-select: none;
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+}

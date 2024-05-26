@@ -11,28 +11,27 @@ const App = () => {
   return (
     <div className="app-layout">
       <Title
+        layout={'title-layout'}
         days={days}
         isNegative={false}
         inputDate={inputDate}
         resultDate={resultDate}
         onDateSelected={setInputDate}
       />
-      <div className="calculator">
-        <Calculator
-          onNumberTap={(number) =>
-            setDays(parseInt(`${days}${number}`.slice(0, days < 0 ? 6 : 5)))
-          }
-          onOperatorTap={() => setDays(-days)}
-          onDeleteTap={() =>
-            setDays(parseInt(days.toString().slice(0, -1)) || 0)
-          }
-          onResultTap={() => {
-            const result = new Date(inputDate);
-            result.setDate(result.getDate() + days);
-            return setResultDate(result);
-          }}
-        />
-      </div>
+
+      <Calculator
+        layout={'calculator-layout'}
+        onNumberTap={(number) =>
+          setDays(parseInt(`${days}${number}`.slice(0, days < 0 ? 6 : 5)))
+        }
+        onOperatorTap={() => setDays(-days)}
+        onDeleteTap={() => setDays(parseInt(days.toString().slice(0, -1)) || 0)}
+        onResultTap={() => {
+          const result = new Date(inputDate);
+          result.setDate(result.getDate() + days);
+          return setResultDate(result);
+        }}
+      />
     </div>
   );
 };

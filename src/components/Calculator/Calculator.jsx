@@ -1,7 +1,9 @@
 import { useRive, EventType, RiveEventType } from '@rive-app/react-canvas';
 import { useEffect } from 'react';
+import './Calculator.css';
 
 const Calculator = ({
+  layout,
   onNumberTap,
   onOperatorTap,
   onDeleteTap,
@@ -68,7 +70,11 @@ const Calculator = ({
     }
   }, [rive, onNumberTap, onOperatorTap, onDeleteTap, onResultTap]);
 
-  return <RiveComponent />;
+  return (
+    <div className={`${layout} calculator-container`}>
+      <RiveComponent className="calculator" />
+    </div>
+  );
 };
 
 export default Calculator;

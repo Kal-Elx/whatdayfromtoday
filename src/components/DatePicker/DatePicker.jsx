@@ -1,4 +1,4 @@
-import ReactDatePicker, { CalendarContainer } from 'react-datepicker';
+import ReactDatePicker from 'react-datepicker';
 import 'react-datepicker/dist/react-datepicker.css';
 
 const DatePicker = ({ date, onDateSelected, child }) => {
@@ -8,7 +8,6 @@ const DatePicker = ({ date, onDateSelected, child }) => {
         selected={date}
         onChange={onDateSelected}
         customInput={child}
-        // withPortal
       />
     </div>
   );

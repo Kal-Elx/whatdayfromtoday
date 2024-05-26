@@ -1,24 +1,33 @@
 import DatePicker from '../DatePicker/DatePicker';
 import './Title.css';
 
-const Title = ({ days, inputDate, resultDate, onDateSelected }) => {
+const Title = ({ layout, days, inputDate, resultDate, onDateSelected }) => {
+  const isMobile = navigator.userAgentData.mobile;
   return (
-    <div className="title">
-      <span className="day-input prevent-select">{`${days}`}</span>
-      <span className="prevent-select">{' Days from '}</span>
-      <DatePicker
-        date={inputDate}
-        onDateSelected={onDateSelected}
-        child={
-          <span className="input-date prevent-select">{`${formatDate(
-            inputDate,
-            false,
-            true
-          )}`}</span>
-        }
-      />
-      <span className="prevent-select">{' is '}</span>
-      <span className="result-date">{`${formatDate(resultDate)}`}</span>
+    <div
+      className={`${layout} title ${
+        isMobile ? 'title-text-small' : 'title-text-large'
+      }`}
+    >
+      <div className={isMobile ? 'title-column' : 'title-row'}>
+        <span className="day-input prevent-select">{`${days}`}</span>
+        <span className="prevent-select">{'Days from'}</span>
+        <DatePicker
+          date={inputDate}
+          onDateSelected={onDateSelected}
+          child={
+            <span className="input-date prevent-select">{`${formatDate(
+              inputDate,
+              false,
+              true
+            )}`}</span>
+          }
+        />
+      </div>
+      <div className={isMobile ? 'title-column' : 'title-row'}>
+        <span className="prevent-select">{'is'}</span>
+        <span className="result-date">{`${formatDate(resultDate)}`}</span>
+      </div>
     </div>
   );
 };

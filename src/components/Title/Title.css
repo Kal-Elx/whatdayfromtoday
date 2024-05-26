@@ -1,5 +1,31 @@
 .title {
-  font-size: 64px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.title-row {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: center;
+  column-gap: 36px;
+}
+
+.title-column {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.title-text-large {
+  font-size: 48px;
+}
+
+.title-text-small {
+  font-size: 36px;
 }
 
 .day-input {
@@ -16,10 +42,6 @@
 .input-date:hover {
   color: #e8e8e8;
   cursor: pointer;
-}
-
-.input-date:active {
-  font-size: 63px;
 }
 
 .result-date {
