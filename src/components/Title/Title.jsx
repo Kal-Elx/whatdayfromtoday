@@ -22,23 +22,26 @@ const Title = ({ layout, days, inputDate, resultDate, onDateSelected }) => {
           date={inputDate}
           onDateSelected={onDateSelected}
           child={
-            <span className="input-date prevent-select">{`${formatDate(
-              inputDate,
-              false,
-              true
-            )}`}</span>
+            <span
+              className={`input-date ${
+                isMobile ? 'input-date-small' : 'input-date-large'
+              } prevent-select`}
+            >{`${formatDate(inputDate, true)}`}</span>
           }
         />
       </div>
       <div className={isMobilePortrait ? 'title-column' : 'title-row'}>
-        <span className="prevent-select">{'is'}</span>
+        <div className="title-row">
+          <span className="prevent-select">{'is'}</span>
+          <span className="result-date">{`${getWeekday(resultDate)}`}</span>
+        </div>
         <span className="result-date">{`${formatDate(resultDate)}`}</span>
       </div>
     </div>
   );
 };
 
-const formatDate = (date, showWeekday = true, showRelativeDay = false) => {
+const formatDate = (date, showRelativeDay = false) => {
   if (showRelativeDay) {
     if (isYesterday(date)) {
       return 'YESTERDAY';
@@ -55,9 +58,15 @@ const formatDate = (date, showWeekday = true, showRelativeDay = false) => {
     day: 'numeric',
   };
 
-  if (showWeekday) {
-    options.weekday = 'long';
-  }
+  return new Date(date)
+    .toLocaleDateString('en-US', options)
+    .replaceAll(',', '');
+};
+
+const getWeekday = (date) => {
+  const options = {
+    weekday: 'long',
+  };
 
   return new Date(date)
     .toLocaleDateString('en-US', options)

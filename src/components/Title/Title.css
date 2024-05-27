@@ -25,7 +25,7 @@
 }
 
 .title-text-small {
-  font-size: 24px;
+  font-size: 36px;
 }
 
 .day-input {
@@ -35,13 +35,21 @@
 .input-date {
   font-weight: 700;
   text-decoration: underline;
-  text-underline-offset: 10px;
-  text-decoration-thickness: 4px;
 }
 
 .input-date:hover {
   color: #e8e8e8;
   cursor: pointer;
+}
+
+.input-date-large {
+  text-underline-offset: 8px;
+  text-decoration-thickness: 4px;
+}
+
+.input-date-small {
+  text-underline-offset: 6px;
+  text-decoration-thickness: 3px;
 }
 
 .result-date {
