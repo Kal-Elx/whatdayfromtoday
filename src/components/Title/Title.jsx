@@ -16,7 +16,7 @@ const Title = ({ layout, days, inputDate, resultDate, onDateSelected }) => {
       <div className={isMobilePortrait ? 'title-column' : 'title-row'}>
         <span className="day-input prevent-select">{`${days}`}</span>
         <span className="prevent-select">{`Day${
-          days == 1 ? '' : 's'
+          Math.abs(days) === 1 ? '' : 's'
         } from`}</span>
         <DatePicker
           date={inputDate}
