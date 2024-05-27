@@ -7,6 +7,7 @@ const App = () => {
   const [days, setDays] = useState(1);
   const [inputDate, setInputDate] = useState(Date.now());
   const [resultDate, setResultDate] = useState(addDays(Date.now(), days));
+  const [isEditing, setIsEditing] = useState(false);
 
   return (
     <div className="app-layout">
@@ -21,12 +22,26 @@ const App = () => {
 
       <Calculator
         layout={'calculator-layout'}
-        onNumberTap={(number) =>
-          setDays(parseInt(`${days}${number}`.slice(0, days < 0 ? 6 : 5)))
-        }
-        onOperatorTap={() => setDays(-days)}
-        onDeleteTap={() => setDays(parseInt(days.toString().slice(0, -1)) || 0)}
-        onResultTap={() => setResultDate(addDays(inputDate, days))}
+        onNumberTap={(number) => {
+          if (isEditing) {
+            setDays(parseInt(`${days}${number}`.slice(0, days < 0 ? 6 : 5)));
+          } else {
+            setDays(number);
+            setIsEditing(true);
+          }
+        }}
+        onOperatorTap={() => {
+          setDays(-days);
+          setIsEditing(true);
+        }}
+        onDeleteTap={() => {
+          setDays(parseInt(days.toString().slice(0, -1)) || 0);
+          setIsEditing(true);
+        }}
+        onResultTap={() => {
+          setResultDate(addDays(inputDate, days));
+          setIsEditing(false);
+        }}
       />
     </div>
   );
